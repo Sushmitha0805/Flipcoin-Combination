@@ -86,7 +86,6 @@ TT=$(echo | awk '{print '$COUNT_3/$LENGTH_OF_ARRAY*100'}')
 Doublet=($HH $HT $TH $TT)
 echo ${Doublet[@]}
 
-
 #Flip coin for Triplet combination
 
 while [[ $NUMBER_TRIPLET -le 20 ]]
@@ -110,13 +109,15 @@ do
    then
       COIN_FLIP="THH"
       COUNT_7=$(( $COUNT_7+1 ))
-	elif [[ $FLIP_CHECK -eq $TAIL && $FLIP_CHECK_ONE -eq $TAIL && $FLIP_CHECK_TWO -eq $TAIL ]]
+   elif [[ $FLIP_CHECK -eq $TAIL && $FLIP_CHECK_ONE -eq $TAIL && $FLIP_CHECK_TWO -eq $TAIL ]]
+
    then
       COIN_FLIP="TTT"
       COUNT_8=$(( $COUNT_8+1 ))
  	elif [[ $FLIP_CHECK -eq $TAIL && $FLIP_CHECK_ONE -eq $TAIL && $FLIP_CHECK_TWO -eq $HEAD ]]
    then
       COIN_FLIP="TTH"
+
       COUNT_9=$(( $COUNT_9+1 ))
 	elif [[ $FLIP_CHECK -eq $TAIL && $FLIP_CHECK_ONE -eq $HEAD && $FLIP_CHECK_TWO -eq $TAIL ]]
    then
