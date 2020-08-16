@@ -1,10 +1,9 @@
 #!/bin/bash -x
 
-IS_HEAD=1;
-RANDOM_CHECK=$((RANDOM%2))
+HEAD=1;
+FLIP_CHECK=$((RANDOM%2))
 NUM_OF_FLIPS=5
-
-if [ $RANDOM_CHECK -eq $IS_HEAD ]
+if [ $FLIP_CHECK -eq $HEAD ]
 then
 	echo " Flip coin is HEADS "
 else
@@ -13,9 +12,9 @@ fi
 
 while [[ $NUMBER -le $NUM_OF_FLIPS ]]
 do
-	RANDOM_CHECK=$((RANDOM%2))
+	FLIP_CHECK=$((RANDOM%2))
 
-if [ $RANDOM_CHECK -eq $HEAD ]
+if [ $FLIP_CHECK -eq $HEAD ]
 then
 	COIN_FLIP="H"
 	HEAD_CNT=$(( $HEAD_CNT+1 ))
@@ -29,12 +28,17 @@ fi
 	echo ${Singlet[@]}
 done
 
-	HEAD_PERCENT=$(echo | awk '{print '$HEAD_CNT/$NUM_OF_FLIPS*100'}')
-	TAIL_PERCENT=$(echo | awk '{print '$TAIL_CNT/$NUM_OF_FLIPS*100'}')
+
+HEAD_PERCENT=$(echo | awk '{print '$HEAD_CNT/$NUM_OF_FLIPS*100'}')
+	echo " Winnig Percentage of Singlet Combination H = " $HEAD_PERCENT
+TAIL_PERCENT=$(echo | awk '{print '$TAIL_CNT/$NUM_OF_FLIPS*100'}')
+	echo " Winning Percentage of Singlet Combination T = " $TAIL_PERCENT
 
 ARRAY_SINGLET=($HEAD_PERCENT $TAIL_PERCENT)
 echo ${ARRAY_SINGLET[@]}
+
 #doublet
+
 
 while [[ $NUMBER_DOUBLET -le 10 ]]
 do
@@ -55,7 +59,7 @@ then
 	COUNT_2=$(( $COUNT_2+1 ))
 elif [[ $FLIP_CHECK_ONE -eq $TAIL || $FLIP_CHECK_TWO -eq $TAIL ]]
 then
-   COIN_FLIP="TT"
+  COIN_FLIP="TT"
 	COUNT_3=$(( $COUNT_3+1 ))
 fi
 
